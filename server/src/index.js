@@ -5,6 +5,9 @@ const connectDB = require("./config/db");
 
 const healthRoutes = require("./app/routes/health.routes");
 
+const authRoutes = require("./app/routes/auth.routes");
+
+
 const app = express();
 
 // Middlewares
@@ -13,6 +16,8 @@ app.use(express.json());
 
 // Routes
 app.use("/api/health", healthRoutes);
+
+app.use("/api/auth", authRoutes);
 
 // 404 handler (minimal)
 app.use((req, res) => {
@@ -31,7 +36,7 @@ app.listen(PORT, () => {
   console.log(`✅ Server running on http://localhost:${PORT}`);
 });
   } catch (error) {
-    console.error("❌ Failed to start server:", error);
+    console.error("❌ Failed to start server:", error.message);
     process.exit(1);
   }
 }
