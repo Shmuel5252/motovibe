@@ -2,12 +2,14 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 const connectDB = require("./config/db");
-const routesRoutes = require("./app/routes/routes.routes");
 
 const healthRoutes = require("./app/routes/health.routes");
 
 const authRoutes = require("./app/routes/auth.routes");
 
+const routesRoutes = require("./app/routes/routes.routes");
+
+const ridesRoutes = require("./app/routes/rides.routes");
 
 const app = express();
 
@@ -22,10 +24,12 @@ app.use("/api/auth", authRoutes);
 
 app.use("/api/routes", routesRoutes);
 
+app.use("/api/rides", ridesRoutes);
+
 // 404 handler (minimal)
 app.use((req, res) => {
   return res.status(404).json({
-    error: { code: "NOT_FOUND", message: "Route not found" },
+    error: { code: "NOT_FOUND", message: "Not found" },
   });
 });
 
