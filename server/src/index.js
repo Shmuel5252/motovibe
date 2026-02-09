@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 const connectDB = require("./config/db");
+const routesRoutes = require("./app/routes/routes.routes");
 
 const healthRoutes = require("./app/routes/health.routes");
 
@@ -18,6 +19,8 @@ app.use(express.json());
 app.use("/api/health", healthRoutes);
 
 app.use("/api/auth", authRoutes);
+
+app.use("/api/routes", routesRoutes);
 
 // 404 handler (minimal)
 app.use((req, res) => {
