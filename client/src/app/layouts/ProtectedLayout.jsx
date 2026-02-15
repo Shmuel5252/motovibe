@@ -1,14 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
-
-const TOKEN_KEY = "motovibe_token";
+import { hydrate } from "../state/authStore.js";
+import { useAuth } from "../state/useAuth.js";
 
 export default function ProtectedLayout() {
   const location = useLocation();
-  const token = localStorage.getItem(TOKEN_KEY);
+  const auth = useAuth();
 
-  if (!token) {
-    return <Navigate to="/auth/login" replace state={{ from: location.pathname }} />;
+  useEffect(() => {
+    hydrate();
+  }, []);
+
+  if (auth.status === "unknown") {
+    return <div>Loading…</div>;
+  }
+
+  if (auth.status !== "authenticated") {
+    return (
+      <Navigate
+        to="/auth/login"
+        replace
+        state={{ from: location.pathname }}
+      />
+    );
   }
 
   return <Outlet />;
