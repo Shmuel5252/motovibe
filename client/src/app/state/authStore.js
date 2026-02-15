@@ -1,6 +1,7 @@
 import { STORAGE_KEYS } from "../config/storageKeys.js";
 
-const state = {
+// חשוב: snapshot חייב להיות יציב (אותו reference) כל עוד אין שינוי אמיתי
+let state = {
   status: "unknown", // 'unknown' | 'guest' | 'authenticated'
   user: null,
   token: null,
@@ -10,11 +11,18 @@ let hydrated = false;
 const listeners = new Set();
 
 function emit() {
-  for (const fn of listeners) fn(getState());
+  // useSyncExternalStore listener לא מקבל args
+  for (const fn of listeners) fn();
+}
+
+function set(nextPartial) {
+  state = { ...state, ...nextPartial };
+  emit();
+  return state;
 }
 
 export function getState() {
-  return { ...state };
+  return state; // ✅ מחזיר reference יציב
 }
 
 export function subscribe(fn) {
@@ -23,46 +31,28 @@ export function subscribe(fn) {
 }
 
 export function hydrate() {
-  // 🔒 idempotent: אם כבר עשינו hydrate — לא עושים שוב
-  if (hydrated) return getState();
+  // 🔒 idempotent
+  if (hydrated) return state;
   hydrated = true;
 
   const token = localStorage.getItem(STORAGE_KEYS.token);
 
   if (token) {
-    state.status = "authenticated";
-    state.token = token;
     // user נמשוך דרך /auth/me בשלב הבא
-    state.user = null;
-  } else {
-    state.status = "guest";
-    state.token = null;
-    state.user = null;
+    return set({ status: "authenticated", token, user: null });
   }
 
-  emit();
-  return getState();
+  return set({ status: "guest", token: null, user: null });
 }
 
 export function setAuth({ token, user }) {
-  state.status = "authenticated";
-  state.token = token;
-  state.user = user ?? null;
-
   if (token) localStorage.setItem(STORAGE_KEYS.token, token);
   else localStorage.removeItem(STORAGE_KEYS.token);
 
-  emit();
-  return getState();
+  return set({ status: "authenticated", token: token ?? null, user: user ?? null });
 }
 
 export function logout() {
-  state.status = "guest";
-  state.token = null;
-  state.user = null;
-
   localStorage.removeItem(STORAGE_KEYS.token);
-
-  emit();
-  return getState();
+  return set({ status: "guest", token: null, user: null });
 }
