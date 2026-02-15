@@ -56,3 +56,6 @@ export function logout() {
   localStorage.removeItem(STORAGE_KEYS.token);
   return set({ status: "guest", token: null, user: null });
 }
+export function setUser(user) {
+  return set({ user: user ?? null });
+}
