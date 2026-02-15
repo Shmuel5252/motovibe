@@ -14,7 +14,10 @@ function notFound(res) {
 async function startRide(req, res) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(400).json({error: { code: "VALIDATION_ERROR", details: errors.array() }
+        return res.status(400).json({
+            error: { 
+                code: "VALIDATION_ERROR", 
+                details: errors.array() }
     });
     }
 
@@ -40,6 +43,15 @@ async function startRide(req, res) {
     const ride = await Ride.create({ 
         owner, 
         route: route._id, 
+
+        routeSnapshot: {
+            title: route.title,
+            start: route.start,
+            end: route.end,
+            distanceKm: route.distanceKm,
+            etaMinutes: route.etaMinutes,
+            polyline: route.polyline,
+        },
         startedAt: new Date(),
         endedAt: null,
         durationSeconds: null,
@@ -73,8 +85,7 @@ async function getActiveRide(req, res) {
     const owner = req.user.userId;
 
     const ride = await Ride.findOne({ owner, endedAt: null })
-    .sort({ startedAt: -1 })
-    .populate('route', 'title start end distanceKm etaMinutes');
+    .sort({ startedAt: -1 });
 
     return res.status(200).json({ ride: ride || null });
 }
@@ -84,8 +95,7 @@ async function getRideHistory(req, res) {
 
     const rides = await Ride.find({ owner, endedAt: { $ne: null } })
     .sort({ startedAt: -1 })
-    .limit(50)
-    .populate('route', 'title start end distanceKm etaMinutes');
+    .limit(50);
 
     return res.status(200).json({ rides });
 }
