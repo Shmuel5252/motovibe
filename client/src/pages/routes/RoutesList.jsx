@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { createRoute, deleteRoute, listRoutes } from "../../app/api/routesApi.js";
+import { Link } from "react-router-dom";
+
 
 
 function toNumber(value) {
@@ -201,7 +203,8 @@ export default function RoutesList() {
                 <ul>
                     {routes.map((r) => (
                         <li key={r._id} style={{ display: "flex", gap: 12, alignItems: "center" }}>
-                            <b>{r.title ?? "Untitled route"}</b>
+                            <Link to={`/routes/${r._id}`}>{r.title ?? "Untitled route"}</Link>
+
 
                             <button onClick={() => onDelete(r._id)} disabled={deletingId === r._id}>
                                 {deletingId === r._id ? "Deleting…" : "Delete"}

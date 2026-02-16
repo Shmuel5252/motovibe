@@ -42,3 +42,11 @@ export async function getRideHistory() {
     throw normalizeError(err);
   }
 }
+export async function getRoute(id) {
+  try {
+    const res = await http.get(`/routes/${id}`);
+    return res.data; // נניח { route } או route — נטפל בדף
+  } catch (err) {
+    throw normalizeError(err);
+  }
+}

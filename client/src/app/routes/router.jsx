@@ -17,6 +17,7 @@ import RoutesList from "../../pages/routes/RoutesList.jsx";
 import RideActive from "../../pages/ride/RideActive.jsx";
 import History from "../../pages/rides/History.jsx";
 
+import RouteDetails from "../../pages/routes/RouteDetails.jsx";
 
 
 export const router = createBrowserRouter([
@@ -40,6 +41,8 @@ export const router = createBrowserRouter([
         element: <ProtectedLayout />,
         children: [
           { path: "/routes", element: <RoutesList/> },
+          { path: "/routes/:id", element: <RouteDetails /> },
+
           { path: "/ride/active", element: <RideActive/> },
           { path: "/rides/history", element: <History/> },
         ],
