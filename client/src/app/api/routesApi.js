@@ -17,3 +17,12 @@ export async function listRoutes() {
     throw normalizeError(err);
   }
 }
+
+export async function createRoute(payload) {
+  try {
+    const res = await http.post("/routes", payload);
+    return res.data;
+  } catch (err) {
+    throw normalizeError(err);
+  }
+}
