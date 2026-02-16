@@ -15,6 +15,9 @@ import RoutesPlaceholder from "../../pages/placeholders/RoutesPlaceholder.jsx";
 import RideActivePlaceholder from "../../pages/placeholders/RideActivePlaceholder.jsx";
 import HistoryPlaceholder from "../../pages/placeholders/HistoryPlaceholder.jsx";
 
+import RoutesList from "../../pages/routes/RoutesList.jsx";
+
+
 export const router = createBrowserRouter([
   {
     element: <AppShell />,
@@ -35,7 +38,7 @@ export const router = createBrowserRouter([
       {
         element: <ProtectedLayout />,
         children: [
-          { path: "/routes", element: <RoutesPlaceholder /> },
+          { path: "/routes", element: <RoutesList/> },
           { path: "/ride/active", element: <RideActivePlaceholder /> },
           { path: "/rides/history", element: <HistoryPlaceholder /> },
         ],
