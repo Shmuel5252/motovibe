@@ -2,52 +2,64 @@ import React, { useEffect, useState } from "react";
 import { getRideHistory } from "../../app/api/ridesApi.js";
 
 export default function History() {
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-  const [rides, setRides] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
+    const [rides, setRides] = useState([]);
 
-  useEffect(() => {
-    let cancelled = false;
+    const totalRides = rides.length;
+    const totalSeconds = rides.reduce((sum, r) => sum + (r.durationSeconds ?? 0), 0);
+    const totalMinutes = Math.round(totalSeconds / 60);
+    const avgSeconds = totalRides ? Math.round(totalSeconds / totalRides) : 0;
 
-    (async () => {
-      setLoading(true);
-      setError("");
 
-      try {
-        const data = await getRideHistory();
-        if (!cancelled) setRides(data.rides ?? []);
-      } catch (err) {
-        if (!cancelled) setError(err.message || "Failed to load history");
-      } finally {
-        if (!cancelled) setLoading(false);
-      }
-    })();
+    useEffect(() => {
+        let cancelled = false;
 
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+        (async () => {
+            setLoading(true);
+            setError("");
 
-  if (loading) return <div>Loading…</div>;
+            try {
+                const data = await getRideHistory();
+                if (!cancelled) setRides(data.rides ?? []);
+            } catch (err) {
+                if (!cancelled) setError(err.message || "Failed to load history");
+            } finally {
+                if (!cancelled) setLoading(false);
+            }
+        })();
 
-  return (
-    <div>
-      <h1>Ride History</h1>
+        return () => {
+            cancelled = true;
+        };
+    }, []);
 
-      {error ? <p style={{ color: "crimson" }}>{error}</p> : null}
+    if (loading) return <div>Loading…</div>;
 
-      {!error && rides.length === 0 ? <p>No rides yet.</p> : null}
+    return (
+        <div>
+            <h1>Ride History</h1>
 
-      {!error && rides.length > 0 ? (
-        <ul>
-          {rides.map((r) => (
-            <li key={r._id}>
-              <b>{r.routeSnapshot?.title ?? "Ride"}</b>{" "}
-              — {r.durationSeconds ?? 0}s
-            </li>
-          ))}
-        </ul>
-      ) : null}
-    </div>
-  );
+            <div style={{ marginBottom: 12 }}>
+                <b>Stats:</b>{" "}
+                {totalRides} rides • {totalSeconds}s (~{totalMinutes}m) • avg {avgSeconds}s
+            </div>
+
+
+            {error ? <p style={{ color: "crimson" }}>{error}</p> : null}
+
+            {!error && rides.length === 0 ? <p>No rides yet.</p> : null}
+
+            {!error && rides.length > 0 ? (
+                <ul>
+                    {rides.map((r) => (
+                        <li key={r._id}>
+                            <b>{r.routeSnapshot?.title ?? "Ride"}</b>{" "}
+                            — {r.durationSeconds ?? 0}s
+                        </li>
+                    ))}
+                </ul>
+            ) : null}
+        </div>
+    );
 }
