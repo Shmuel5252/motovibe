@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { createRoute, deleteRoute, listRoutes } from "../../app/api/routesApi.js";
 import { Link } from "react-router-dom";
+import { startRide } from "../../app/api/ridesApi.js";
 
 
 
@@ -16,6 +17,9 @@ export default function RoutesList() {
     const [routes, setRoutes] = useState([]);
 
     const [deletingId, setDeletingId] = useState("");
+
+    const [startRideMsg, setStartRideMsg] = useState("");
+    const [startingId, setStartingId] = useState("");
 
 
     const [form, setForm] = useState({
@@ -74,6 +78,8 @@ export default function RoutesList() {
     async function onCreate(e) {
         e.preventDefault();
         setCreateError("");
+        setStartRideMsg("");
+
 
         const startLat = toNumber(form.startLat);
         const startLng = toNumber(form.startLng);
@@ -126,6 +132,8 @@ export default function RoutesList() {
     async function onDelete(id) {
         setError("");
         setCreateError("");
+        setStartRideMsg("");
+        setStartRideMsg("");
         setDeletingId(id);
 
         try {
@@ -138,10 +146,34 @@ export default function RoutesList() {
         }
     }
 
+    async function onStartRide(id) {
+        setError("");
+        setCreateError("");
+        setStartRideMsg("");
+        setStartingId(id);
+
+        try {
+            await startRide(id);
+            setStartRideMsg("Ride started. Go to Ride Active.");
+        } catch (err) {
+            setError(err.message || "Failed to start ride");
+        } finally {
+            setStartingId("");
+        }
+    }
+
+
 
     return (
         <div>
             <h1>Routes</h1>
+
+            {startRideMsg ? (
+                <p>
+                    {startRideMsg} <Link to="/ride/active">Open</Link>
+                </p>
+            ) : null}
+
 
             <h2>Create route</h2>
             <form onSubmit={onCreate} style={{ display: "grid", gap: 8, maxWidth: 420 }}>
@@ -209,6 +241,15 @@ export default function RoutesList() {
                             <button onClick={() => onDelete(r._id)} disabled={deletingId === r._id}>
                                 {deletingId === r._id ? "Deleting…" : "Delete"}
                             </button>
+
+                            <button
+                                onClick={() => onStartRide(r._id)}
+                                disabled={startingId === r._id || creating || deletingId !== ""}
+                            >
+                                {startingId === r._id ? "Starting…" : "Start Ride"}
+                            </button>
+
+
                         </li>
                     ))}
                 </ul>
