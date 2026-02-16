@@ -26,3 +26,11 @@ export async function createRoute(payload) {
     throw normalizeError(err);
   }
 }
+export async function deleteRoute(id) {
+  try {
+    const res = await http.delete(`/routes/${id}`);
+    return res.data;
+  } catch (err) {
+    throw normalizeError(err);
+  }
+}
