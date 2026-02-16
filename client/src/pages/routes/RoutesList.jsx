@@ -180,7 +180,7 @@ export default function RoutesList() {
                     <input name="endLabel" value={form.endLabel} onChange={onChange} />
                 </label>
 
-                <button type="submit" disabled={creating}>
+                <button type="submit" disabled={creating || deletingId !== ""}>
                     {creating ? "Creating…" : "Create"}
                 </button>
 
