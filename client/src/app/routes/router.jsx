@@ -11,11 +11,12 @@ import Home from "../../pages/Home.jsx";
 import Login from "../../pages/auth/Login.jsx";
 import Register from "../../pages/auth/Register.jsx";
 
-import RoutesPlaceholder from "../../pages/placeholders/RoutesPlaceholder.jsx";
-import RideActivePlaceholder from "../../pages/placeholders/RideActivePlaceholder.jsx";
-import HistoryPlaceholder from "../../pages/placeholders/HistoryPlaceholder.jsx";
 
 import RoutesList from "../../pages/routes/RoutesList.jsx";
+
+import RideActive from "../../pages/ride/RideActive.jsx";
+import History from "../../pages/rides/History.jsx";
+
 
 
 export const router = createBrowserRouter([
@@ -39,8 +40,8 @@ export const router = createBrowserRouter([
         element: <ProtectedLayout />,
         children: [
           { path: "/routes", element: <RoutesList/> },
-          { path: "/ride/active", element: <RideActivePlaceholder /> },
-          { path: "/rides/history", element: <HistoryPlaceholder /> },
+          { path: "/ride/active", element: <RideActive/> },
+          { path: "/rides/history", element: <History/> },
         ],
       },
     ],
