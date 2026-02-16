@@ -17,7 +17,6 @@ export async function listRoutes() {
     throw normalizeError(err);
   }
 }
-
 export async function createRoute(payload) {
   try {
     const res = await http.post("/routes", payload);
@@ -34,3 +33,12 @@ export async function deleteRoute(id) {
     throw normalizeError(err);
   }
 }
+export async function getRoute(id) {
+  try {
+    const res = await http.get(`/routes/${id}`);
+    return res.data; // יכול להיות { route } או route
+  } catch (err) {
+    throw normalizeError(err);
+  }
+}
+
