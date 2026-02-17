@@ -232,7 +232,7 @@ body{
   padding: 6px 6px;
   border-radius: 14px;
 
-  transition: transform 0.15s ease, color 0.2s ease, background 0.2s ease;
+  transition: transform 0.15s ease, color 0.2s ease,background 0.2s ease;
 }
 
 .mv-nav__icon{
@@ -269,4 +269,13 @@ body{
 
 .mv-nav__item--center.mv-nav__item--active{
   box-shadow: 0 16px 40px rgba(25,211,197,0.40);
+}
+
+.mv-nav__item--disabled{
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.mv-nav__item--disabled:hover{
+  transform: none;
 }
