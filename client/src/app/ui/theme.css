@@ -777,3 +777,41 @@ body{
 .mv-auth__hint{
   font-size: 12px;
 }
+
+/* =========================
+   Responsive polish (mobile-first)
+   ========================= */
+
+@media (max-width: 480px){
+  :root{ --pad: 14px; }
+
+  /* Home */
+  .mv-actions{ grid-template-columns: 1fr; }
+  .mv-hero__actions{ grid-template-columns: 1fr; }
+  .mv-timer{ font-size: 40px; }
+
+  /* Route Details */
+  .mv-row{ flex-direction: column; align-items: stretch; }
+  .mv-mapPreview--big{ height: 190px; }
+
+  /* Ride */
+  .mv-rideCard__timer{ font-size: 44px; }
+
+  /* Forms */
+  .mv-grid2{ grid-template-columns: 1fr; }
+
+  /* Route cards / History cards actions */
+  .mv-routeCard__content{ flex-direction: column; align-items: stretch; }
+  .mv-routeCard__actions{ justify-content: flex-start; }
+
+  .mv-historyCard__content{ flex-direction: column; align-items: stretch; gap: 8px; }
+}
+
+@media (min-width: 700px){
+  /* nicer grids on larger screens */
+  .mv-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px){
+  .mv-grid{ grid-template-columns: repeat(3, 1fr); }
+}
