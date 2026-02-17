@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { login } from "../../app/api/authApi.js";
 import { setAuth } from "../../app/state/authStore.js";
+
+import GlassCard from "../../app/ui/components/GlassCard.jsx";
+import ButtonPrimary from "../../app/ui/components/ButtonPrimary.jsx";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -26,38 +30,59 @@ export default function Login() {
   }
 
   return (
-    <div>
-      <h1>Login</h1>
+    <div className="mv-auth">
+      <div className="mv-auth__brand">
+        <span className="mv-logo-dot" aria-hidden="true" />
+        <div>
+          <div className="mv-auth__title">MotoVibe</div>
+          <div className="mv-auth__subtitle mv-muted">Dark glass. Teal energy.</div>
+        </div>
+      </div>
 
-      <form onSubmit={onSubmit} style={{ display: "grid", gap: 8, maxWidth: 320 }}>
-        <label>
-          Email
-          <input
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            type="email"
-            autoComplete="email"
-            required
-          />
-        </label>
+      <GlassCard title="Login" subtitle="Welcome back">
+        <form onSubmit={onSubmit} className="mv-form">
+          <div className="mv-field">
+            <label className="mv-label">Email</label>
+            <input
+              className="mv-input"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              type="email"
+              autoComplete="email"
+              required
+              placeholder="you@example.com"
+            />
+          </div>
 
-        <label>
-          Password
-          <input
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            type="password"
-            autoComplete="current-password"
-            required
-          />
-        </label>
+          <div className="mv-field">
+            <label className="mv-label">Password</label>
+            <input
+              className="mv-input"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              type="password"
+              autoComplete="current-password"
+              required
+              placeholder="••••••••"
+            />
+          </div>
 
-        <button type="submit" disabled={loading}>
-          {loading ? "Loading…" : "Login"}
-        </button>
+          {error ? <div className="mv-error">{error}</div> : null}
 
-        {error ? <p style={{ color: "crimson" }}>{error}</p> : null}
-      </form>
+          <div className="mv-auth__actions">
+            <ButtonPrimary type="submit" disabled={loading}>
+              {loading ? "Loading…" : "Login"}
+            </ButtonPrimary>
+
+            <div className="mv-auth__hint mv-muted">
+              No account?{" "}
+              <Link className="mv-link" to="/auth/register">
+                Register
+              </Link>
+            </div>
+          </div>
+        </form>
+      </GlassCard>
     </div>
   );
 }

@@ -732,3 +732,48 @@ body{
   border: 1px solid rgba(255,255,255,0.10);
   color: rgba(255,255,255,0.90);
 }
+
+
+/* =========================
+   Auth screens helpers
+   ========================= */
+
+.mv-auth{
+  min-height: calc(100vh - 120px);
+  display: grid;
+  place-items: center;
+  gap: 14px;
+  padding-top: 10px;
+}
+
+.mv-auth__brand{
+  width: min(520px, 100%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 6px;
+}
+
+.mv-auth__title{
+  font-weight: 900;
+  letter-spacing: 0.3px;
+}
+
+.mv-auth__subtitle{
+  margin-top: 2px;
+  font-size: 12px;
+}
+
+.mv-auth .mv-card{
+  width: min(520px, 100%);
+}
+
+.mv-auth__actions{
+  display: grid;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.mv-auth__hint{
+  font-size: 12px;
+}
