@@ -1,6 +1,7 @@
 import "./app/init/authEvents.js";
 import "./app/init/authBootstrap.js";
 
+import './app/ui/theme.css';
 
 
 import React from "react";
