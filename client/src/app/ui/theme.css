@@ -815,3 +815,52 @@ body{
 @media (min-width: 1024px){
   .mv-grid{ grid-template-columns: repeat(3, 1fr); }
 }
+
+/* =========================
+   Garage (UI placeholder)
+   ========================= */
+
+.mv-garage{ display: grid; }
+
+.mv-garage__hero{
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 12px;
+  align-items: center;
+}
+
+.mv-bikeImg{
+  height: 86px;
+  border-radius: 16px;
+  background:
+    radial-gradient(120px 70px at 30% 30%, rgba(25,211,197,0.18), transparent 60%),
+    linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+  border: 1px solid rgba(255,255,255,0.10);
+  position: relative;
+  overflow: hidden;
+}
+
+.mv-bikeImg__shine{
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.10), transparent);
+  transform: translateX(-40%);
+}
+
+.mv-garage__name{
+  font-weight: 900;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.mv-garage__actions{
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+@media (max-width: 480px){
+  .mv-garage__hero{ grid-template-columns: 1fr; }
+  .mv-garage__actions{ grid-template-columns: 1fr; }
+}

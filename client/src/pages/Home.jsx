@@ -97,6 +97,55 @@ export default function Home() {
         </div>
       </div>
 
+           {/* Garage (UI placeholder) */}
+      <div className="mv-section">
+        <h2 className="mv-h2">Garage</h2>
+
+        <GlassCard
+          title="My Bike"
+          subtitle="Maintenance overview (UI placeholder)"
+          right={<span className="mv-badge mv-badge--teal">NEW</span>}
+        >
+          <div className="mv-garage">
+            <div className="mv-garage__hero">
+              <div className="mv-bikeImg" aria-hidden="true">
+                <div className="mv-bikeImg__shine" />
+              </div>
+
+              <div className="mv-garage__meta">
+                <div className="mv-garage__name">Yamaha MT-07</div>
+                <div className="mv-muted">Odometer: <b>18,420 km</b></div>
+                <div className="mv-muted">Next service: <b>+580 km</b></div>
+              </div>
+            </div>
+
+            <div style={{ marginTop: 12 }}>
+              <StatStrip
+                items={[
+                  { icon: "🛠️", value: "Due soon", label: "Service" },
+                  { icon: "⛓️", value: "OK", label: "Chain" },
+                  { icon: "🛞", value: "Monitor", label: "Tires" },
+                ]}
+              />
+            </div>
+
+            <div className="mv-garage__actions">
+              <button className="mv-btn mv-btn--ghost" type="button" disabled>
+                Add log
+              </button>
+              <button className="mv-btn mv-btn--primarySoft" type="button" disabled>
+                View alerts
+              </button>
+            </div>
+
+            <div className="mv-muted" style={{ marginTop: 10, fontSize: 12 }}>
+              Note: Garage endpoints will be added in Server S1 (Bike CRUD). UI is ready.
+            </div>
+          </div>
+        </GlassCard>
+      </div>
+
+
       {/* Debug section kept (but styled + collapsed) */}
       <GlassCard className="mv-debug" title="Auth Debug" subtitle="Temporary (MVP)">
         <ul className="mv-list">
