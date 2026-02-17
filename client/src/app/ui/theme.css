@@ -232,7 +232,7 @@ body{
   padding: 6px 6px;
   border-radius: 14px;
 
-  transition: transform 0.15s ease, color 0.2s ease,background 0.2s ease;
+  transition: transform 0.15s ease, color 0.2s ease, background 0.2s ease;
 }
 
 .mv-nav__icon{
@@ -278,4 +278,101 @@ body{
 
 .mv-nav__item--disabled:hover{
   transform: none;
+}
+
+/* =========================
+   AppShell Layout
+   ========================= */
+
+.mv-app{
+  min-height: 100vh;
+}
+
+.mv-header{
+  position: sticky;
+  top: 0;
+  z-index: 20;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 14px 16px;
+
+  background: rgba(11,15,20,0.65);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+
+  backdrop-filter: blur(var(--blur));
+  -webkit-backdrop-filter: blur(var(--blur));
+}
+
+.mv-header__brand{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.mv-logo-dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--teal);
+  box-shadow: 0 0 18px rgba(25,211,197,0.55);
+}
+
+.mv-header__title{
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+
+.mv-header__actions{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mv-header__authlinks{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.mv-link{
+  color: var(--text);
+  text-decoration: none;
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
+}
+
+.mv-link:hover{
+  opacity: 1;
+}
+
+.mv-header__icon{
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.06);
+  color: var(--text);
+  border-radius: 14px;
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.mv-header__icon:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+}
+
+.mv-topnav{
+  display: flex;
+  gap: 14px;
+  padding: 10px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+}
+
+.mv-main{
+  padding: var(--pad);
+  padding-bottom: 96px; /* מקום ל-bottom nav */
 }
