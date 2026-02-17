@@ -377,3 +377,120 @@ body{
   padding: var(--pad);
   padding-bottom: 96px; /* מקום ל-bottom nav */
 }
+
+
+/* =========================
+   Home / Dashboard helpers
+   ========================= */
+
+.mv-page{ display: grid; gap: 16px; }
+
+.mv-page__title{ margin-top: 4px; }
+.mv-h1{ margin: 0; font-size: 26px; letter-spacing: 0.2px; }
+.mv-subtitle{ margin: 6px 0 0; color: var(--muted); }
+
+.mv-h2{ margin: 0 0 10px; font-size: 14px; color: rgba(255,255,255,0.86); letter-spacing: 0.3px; }
+
+.mv-section{ display: grid; gap: 10px; }
+
+.mv-card--hero .mv-card__body{ padding: 18px; }
+
+.mv-hero{ display: grid; gap: 14px; }
+.mv-timer{
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-align: center;
+  color: rgba(255,255,255,0.92);
+}
+
+.mv-hero__actions{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.mv-actions{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+/* Extra button variants (still same Button system) */
+.mv-btn--ghost{
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.06);
+  color: var(--text);
+}
+
+.mv-btn--small{
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 14px;
+}
+
+.mv-btn--primarySoft{
+  border: 1px solid rgba(25,211,197,0.18);
+  background: rgba(25,211,197,0.10);
+  color: rgba(255,255,255,0.92);
+  box-shadow: 0 10px 26px rgba(25,211,197,0.12);
+}
+
+.mv-grid{
+  display: grid;
+  gap: 12px;
+}
+
+/* Map preview placeholder (card media) */
+.mv-mapPreview{
+  height: 110px;
+  border-radius: 14px;
+  background:
+    radial-gradient(400px 160px at 20% 20%, rgba(25,211,197,0.12), transparent 60%),
+    linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.10);
+  overflow: hidden;
+  position: relative;
+}
+
+.mv-mapPreview__line{
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, transparent 0%, rgba(25,211,197,0.0) 20%, rgba(25,211,197,0.22) 50%, rgba(25,211,197,0.0) 80%, transparent 100%);
+  transform: rotate(-10deg);
+  opacity: 0.9;
+}
+
+.mv-routeCard .mv-card__body{ display: grid; gap: 12px; }
+
+.mv-routeCard__content{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.mv-routeCard__title{ font-weight: 800; }
+.mv-routeCard__meta{ font-size: 12px; }
+
+.mv-badge{
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.mv-badge--teal{
+  background: rgba(25,211,197,0.10);
+  border: 1px solid rgba(25,211,197,0.20);
+  color: rgba(255,255,255,0.92);
+}
+
+.mv-debug .mv-card__body{ padding: 14px 16px; }
+
+.mv-list{
+  margin: 0;
+  padding-left: 18px;
+  color: rgba(255,255,255,0.88);
+}
