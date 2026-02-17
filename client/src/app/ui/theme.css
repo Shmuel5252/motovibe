@@ -631,3 +631,68 @@ body{
 .mv-kv__v{
   font-weight: 700;
 }
+
+
+/* =========================
+   Ride Active helpers
+   ========================= */
+
+.mv-select{
+  width: 100%;
+  padding: 12px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+  color: var(--text);
+  outline: none;
+}
+
+.mv-select:focus{
+  border-color: rgba(25,211,197,0.28);
+  box-shadow: 0 0 0 3px rgba(25,211,197,0.12);
+}
+
+.mv-ride{
+  position: relative;
+  display: grid;
+  gap: 14px;
+}
+
+.mv-ride__bg{
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  background:
+    radial-gradient(900px 380px at 30% 20%, rgba(25,211,197,0.12), transparent 60%),
+    radial-gradient(700px 300px at 80% 60%, rgba(14,165,165,0.10), transparent 60%),
+    linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.08);
+  filter: blur(0px);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.mv-ride__bgLine{
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, transparent 0%, rgba(25,211,197,0.0) 20%, rgba(25,211,197,0.22) 50%, rgba(25,211,197,0.0) 80%, transparent 100%);
+  transform: rotate(-12deg);
+  opacity: 0.8;
+}
+
+.mv-rideCard{
+  position: relative;
+}
+
+.mv-rideCard__timer{
+  font-size: 52px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.mv-rideCard__actions{
+  margin-top: 14px;
+  display: grid;
+}
