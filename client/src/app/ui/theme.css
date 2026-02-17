@@ -696,3 +696,39 @@ body{
   margin-top: 14px;
   display: grid;
 }
+
+/* =========================
+   History helpers
+   ========================= */
+
+.mv-mapPreview--history{
+  height: 90px;
+  border-radius: 14px;
+}
+
+.mv-historyCard .mv-card__body{
+  display: grid;
+  gap: 12px;
+}
+
+.mv-historyCard__content{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.mv-historyCard__title{
+  font-weight: 900;
+}
+
+.mv-historyCard__meta{
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.mv-badge--soft{
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+  color: rgba(255,255,255,0.90);
+}
