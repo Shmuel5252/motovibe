@@ -563,3 +563,71 @@ body{
 }
 
 .mv-info .mv-card__body{ padding: 14px 16px; }
+
+/* =========================
+   Route Details helpers
+   ========================= */
+
+.mv-row{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mv-mapPreview--big{
+  height: 220px;
+}
+
+.mv-detailsHero .mv-card__body{
+  padding: 16px;
+}
+
+.mv-mapPreview__pins{
+  position: absolute;
+  inset: 0;
+}
+
+.mv-pin{
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 0 18px rgba(0,0,0,0.35);
+}
+
+.mv-pin--start{
+  left: 18%;
+  top: 60%;
+  background: rgba(25,211,197,0.95);
+  box-shadow: 0 0 18px rgba(25,211,197,0.55);
+}
+
+.mv-pin--end{
+  left: 72%;
+  top: 34%;
+  background: rgba(255,255,255,0.90);
+  box-shadow: 0 0 18px rgba(255,255,255,0.25);
+}
+
+.mv-kv{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.mv-kv:last-child{
+  border-bottom: none;
+}
+
+.mv-kv__k{
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.mv-kv__v{
+  font-weight: 700;
+}
