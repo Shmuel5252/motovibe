@@ -48,3 +48,51 @@ body{
 }
 
 .mv-muted{ color: var(--muted); }
+
+
+
+/* =========================
+   GlassCard
+   ========================= */
+
+.mv-card{
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.08),
+    rgba(255,255,255,0.05)
+  );
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(var(--blur));
+  -webkit-backdrop-filter: blur(var(--blur));
+  overflow: hidden;
+}
+
+.mv-card__header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.mv-card__titles{ min-width: 0; }
+
+.mv-card__title{
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.mv-card__subtitle{
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.mv-card__right{ flex: 0 0 auto; }
+
+.mv-card__body{ padding: 16px; }
