@@ -494,3 +494,72 @@ body{
   padding-left: 18px;
   color: rgba(255,255,255,0.88);
 }
+
+
+/* =========================
+   Forms + Routes List helpers
+   ========================= */
+
+.mv-form{ display: grid; gap: 10px; }
+.mv-field{ display: grid; gap: 6px; }
+
+.mv-label{
+  font-size: 12px;
+  color: rgba(255,255,255,0.82);
+}
+
+.mv-input{
+  width: 100%;
+  padding: 12px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+  color: var(--text);
+  outline: none;
+}
+
+.mv-input:focus{
+  border-color: rgba(25,211,197,0.28);
+  box-shadow: 0 0 0 3px rgba(25,211,197,0.12);
+}
+
+.mv-grid2{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.mv-form__actions{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.mv-form__hint{ font-size: 12px; }
+
+.mv-error{
+  color: #ff7a7a;
+  background: rgba(239,68,68,0.10);
+  border: 1px solid rgba(239,68,68,0.20);
+  padding: 10px 12px;
+  border-radius: 14px;
+}
+
+/* Danger soft (small) */
+.mv-btn--dangerSoft{
+  border: 1px solid rgba(239,68,68,0.22);
+  background: rgba(239,68,68,0.10);
+  color: rgba(255,255,255,0.92);
+}
+
+.mv-routeCard__left{ min-width: 0; }
+.mv-routeCard__actions{
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.mv-info .mv-card__body{ padding: 14px 16px; }
