@@ -864,3 +864,35 @@ body{
   .mv-garage__hero{ grid-template-columns: 1fr; }
   .mv-garage__actions{ grid-template-columns: 1fr; }
 }
+
+/* =========================
+   Garage page helpers
+   ========================= */
+
+.mv-bikeImg--big{
+  height: 140px;
+  border-radius: 18px;
+}
+
+.mv-garagePage__hero{
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 14px;
+  align-items: center;
+}
+
+.mv-garagePage__actions{
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.mv-logCard__title{
+  font-weight: 900;
+}
+
+@media (max-width: 480px){
+  .mv-garagePage__hero{ grid-template-columns: 1fr; }
+  .mv-garagePage__actions{ grid-template-columns: 1fr; }
+}
