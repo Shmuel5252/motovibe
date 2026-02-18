@@ -1,4 +1,4 @@
-import http from "./http.js";
+import { http } from "./http.js";
 
 export async function listBikes() {
   const { data } = await http.get("/bikes");
