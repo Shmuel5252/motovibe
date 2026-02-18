@@ -896,3 +896,11 @@ body{
   .mv-garagePage__hero{ grid-template-columns: 1fr; }
   .mv-garagePage__actions{ grid-template-columns: 1fr; }
 }
+
+/* BottomNav disabled item */
+.mv-nav__item--disabled{
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+  filter: grayscale(0.2);
+}
