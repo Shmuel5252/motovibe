@@ -19,6 +19,9 @@ import History from "../../pages/rides/History.jsx";
 
 import RouteDetails from "../../pages/routes/RouteDetails.jsx";
 
+import Bike from "../../pages/bike/Bike.jsx";
+
+
 
 export const router = createBrowserRouter([
   {
@@ -45,6 +48,8 @@ export const router = createBrowserRouter([
 
           { path: "/ride/active", element: <RideActive/> },
           { path: "/rides/history", element: <History/> },
+          { path: "/bike", element: <Bike /> },
+
         ],
       },
     ],
