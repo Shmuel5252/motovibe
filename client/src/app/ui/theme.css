@@ -932,3 +932,14 @@ body{
 .mv-error{ color: #ff6b6b; margin: 8px 0 0; }
 .mv-kv{ display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .mv-kv__value{ font-weight: 700; font-size: 16px; }
+
+
+/* Map */
+.mv-mapBox{
+  width: 100%;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.04);
+  box-shadow: var(--shadow);
+}
