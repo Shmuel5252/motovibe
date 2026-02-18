@@ -5,6 +5,7 @@ import { getRoute } from "../../app/api/routesApi.js";
 import GlassCard from "../../app/ui/components/GlassCard.jsx";
 import StatStrip from "../../app/ui/components/StatStrip.jsx";
 import ButtonPrimary from "../../app/ui/components/ButtonPrimary.jsx";
+import RouteMap from "../../app/ui/components/RouteMap.jsx";
 
 function fmtNum(n, suffix = "") {
   const x = Number(n);
@@ -46,8 +47,22 @@ export default function RouteDetails() {
   const toLabel = route?.end?.label || "End";
 
   const stats = [
-    { icon: "📍", value: route?.distanceKm != null ? `${Number(route.distanceKm).toFixed(1)} km` : "-- km", label: "Distance" },
-    { icon: "⏱️", value: route?.etaMinutes != null ? `${Math.round(Number(route.etaMinutes))} min` : "-- min", label: "ETA" },
+    {
+      icon: "📍",
+      value:
+        route?.distanceKm != null
+          ? `${Number(route.distanceKm).toFixed(1)} km`
+          : "-- km",
+      label: "Distance",
+    },
+    {
+      icon: "⏱️",
+      value:
+        route?.etaMinutes != null
+          ? `${Math.round(Number(route.etaMinutes))} min`
+          : "-- min",
+      label: "ETA",
+    },
     { icon: "🔒", value: route?.visibility ?? "—", label: "Visibility" },
   ];
 
@@ -55,7 +70,7 @@ export default function RouteDetails() {
     <div className="mv-page">
       <div className="mv-page__title">
         <h1 className="mv-h1">Route Details</h1>
-        <p className="mv-subtitle">Preview and stats (Map is placeholder for now).</p>
+        <p className="mv-subtitle mv-muted">{title}</p>
       </div>
 
       <div className="mv-row">
@@ -63,7 +78,6 @@ export default function RouteDetails() {
           ← Back
         </Link>
 
-        {/* UI-only placeholder: Start Ride wiring will come when we style Ride flow */}
         <ButtonPrimary type="button" disabled>
           Start Ride
         </ButtonPrimary>
@@ -75,21 +89,15 @@ export default function RouteDetails() {
 
       {!loading && !error && route ? (
         <>
-          <GlassCard className="mv-detailsHero" title={title} subtitle={`${fromLabel} → ${toLabel}`}>
-            <div className="mv-mapPreview mv-mapPreview--big" aria-hidden="true">
-              <div className="mv-mapPreview__line" />
-              <div className="mv-mapPreview__pins">
-                <span className="mv-pin mv-pin--start" title="Start" />
-                <span className="mv-pin mv-pin--end" title="End" />
-              </div>
-            </div>
-
-            <div style={{ marginTop: 12 }}>
-              <StatStrip items={stats} />
-            </div>
+          <GlassCard title="Map Preview" subtitle={`${fromLabel} → ${toLabel}`}>
+            <RouteMap polyline={route.polyline} height={320} />
           </GlassCard>
 
-          <div className="mv-grid">
+          <div style={{ marginTop: 12 }}>
+            <StatStrip items={stats} />
+          </div>
+
+          <div className="mv-grid" style={{ marginTop: 12 }}>
             <GlassCard title="Start" subtitle={fromLabel}>
               <div className="mv-kv">
                 <div className="mv-kv__k">Lat</div>
