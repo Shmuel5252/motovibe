@@ -15,6 +15,9 @@ const directionsRoutes = require("./app/routes/directions.routes");
 
 const bikesRoutes = require("./app/routes/bikes.routes");
 
+const maintenanceRoutes = require("./app/routes/maintenance.routes");
+
+
 
 const app = express();
 
@@ -35,6 +38,7 @@ app.use("/api/rides", ridesRoutes);
 
 app.use("/api/directions", directionsRoutes);
 
+app.use("/api/maintenance", maintenanceRoutes);
 
 
 // 404 handler (minimal)

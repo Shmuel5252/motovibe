@@ -4,6 +4,9 @@ const { body } = require("express-validator");
 const authMiddleware = require("../middlewares/auth.middleware");
 const bikesController = require("../controllers/bikes.controller");
 
+const maintenanceController = require("../controllers/maintenance.controller");
+
+
 router.use(authMiddleware);
 
 router.post(
@@ -34,6 +37,34 @@ router.patch(
   ],
   bikesController.updateMyBike
 );
+
+// ===== Maintenance (per bike) =====
+router.get("/:id/maintenance", maintenanceController.getBikeMaintenance);
+
+router.post(
+  "/:id/maintenance/logs",
+  [
+    body("type").isString().trim().isLength({ min: 2, max: 40 }),
+    body("date").isISO8601(),
+    body("odometerKm").isFloat({ min: 0 }).toFloat(),
+    body("notes").optional().isString().trim().isLength({ max: 400 }),
+    body("cost").optional().isFloat({ min: 0 }).toFloat(),
+  ],
+  maintenanceController.addMaintenanceLog
+);
+
+router.post(
+  "/:id/maintenance/plans",
+  [
+    body("type").isString().trim().isLength({ min: 2, max: 40 }),
+    body("intervalKm").optional().isFloat({ min: 0 }).toFloat(),
+    body("intervalDays").optional().isFloat({ min: 0 }).toFloat(),
+    body("lastServiceOdometerKm").optional().isFloat({ min: 0 }).toFloat(),
+    body("lastServiceDate").optional().isISO8601(),
+  ],
+  maintenanceController.upsertMaintenancePlan
+);
+
 
 router.delete("/:id", bikesController.deleteMyBike);
 
